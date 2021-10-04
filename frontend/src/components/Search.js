@@ -170,7 +170,7 @@ export default function Search() {
       if (query !== prevquery) {
         try {
           const { data } = await http.get(
-            `${baseUrl}${routes.SEARCH}?q=${query}`
+            `${baseUrl}${routes.SEARCH}?q=${query.toLowerCase()}`
           );
           setResults(data.search);
           prevquery = query;
@@ -187,7 +187,7 @@ export default function Search() {
     return (
       <B to={routes.BOOK + "/" + path}>
         <Cover>
-          <img src={baseUrl + cover} />
+          <img src={ cover} alt="cover" />
         </Cover>
         <h3>{title}</h3>
       </B>
